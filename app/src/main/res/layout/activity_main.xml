@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:ignore="ExtraText"><![CDATA[>
+
+        ]]>
+
+        <TextView
+            android:id="@+id/game_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:text="Simple Ludo Game"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/reset_button"
+            style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginBottom="16dp"
+            android:background="#C82C2C"
+            android:backgroundTint="#A26464"
+            android:text="Reset Game"
+            android:textColor="?android:attr/textColorSecondary"
+            android:textColorLink="#B91919"
+            app:rippleColor="@color/design_default_color_error" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <!-- Player A Path -->
+            <LinearLayout
+                android:id="@+id/playerA_path"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <!-- Steps for Player A, from 10 to 1 -->
+                <ImageView
+                    android:id="@+id/stepA_10"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/player1" />
+
+                <ImageView
+                    android:id="@+id/stepA_9"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/path_cell"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/player1" />
+
+                <ImageView
+                    android:id="@+id/stepA_8"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/path_cell"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/player1" />
+
+                <ImageView
+                    android:id="@+id/stepA_7"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/path_cell"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/player1" />
+
+                <ImageView
+                    android:id="@+id/stepA_6"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/path_cell"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/player1" />
+
+                <ImageView
+                    android:id="@+id/stepA_5"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/path_cell"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/player1" />
+
+                <ImageView
+                    android:id="@+id/stepA_4"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/path_cell"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/player1" />
+
+                <ImageView
+                    android:id="@+id/stepA_3"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/path_cell"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/player1" />
+
+                <ImageView
+                    android:id="@+id/stepA_2"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/path_cell"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/player1" />
+
+                <ImageView
+                    android:id="@+id/stepA_1"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/path_cell"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/player1_seed" />
+
+                <!-- Player A Label -->
+                <TextView
+                    android:id="@+id/playerA_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Player A"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <!-- Dice and Info Column -->
+            <LinearLayout
+                android:id="@+id/dice_info_column"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginVertical="16dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <!-- Information TextView -->
+                <TextView
+                    android:id="@+id/info_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="32dp"
+                    android:text="Player A's Turn"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <!-- Dice Image -->
+                <ImageView
+                    android:id="@+id/dice_image"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="32dp"
+                    android:contentDescription="Dice"
+                    android:src="@drawable/dice_1" />
+
+                <!-- Roll Dice Button -->
+                <Button
+                    android:id="@+id/roll_dice_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="32dp"
+                    android:text="Roll Dice" />
+            </LinearLayout>
+
+            <!-- Player B Path -->
+            <LinearLayout
+                android:id="@+id/playerB_path"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <!-- Steps for Player B, from 10 to 1 -->
+                <ImageView
+                    android:id="@+id/stepB_10"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/path_cell"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/player2" />
+
+                <ImageView
+                    android:id="@+id/stepB_9"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/path_cell"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/player2" />
+
+                <ImageView
+                    android:id="@+id/stepB_8"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/path_cell"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/player2" />
+
+                <ImageView
+                    android:id="@+id/stepB_7"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/path_cell"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/player2" />
+
+                <ImageView
+                    android:id="@+id/stepB_6"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/path_cell"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/player2" />
+
+                <ImageView
+                    android:id="@+id/stepB_5"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/path_cell"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/player2" />
+
+                <ImageView
+                    android:id="@+id/stepB_4"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/path_cell"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/player2" />
+
+                <ImageView
+                    android:id="@+id/stepB_3"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/path_cell"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/player2" />
+
+                <ImageView
+                    android:id="@+id/stepB_2"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/path_cell"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/player2" />
+
+                <ImageView
+                    android:id="@+id/stepB_1"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/path_cell"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/player2_seed" />
+
+                <!-- Player B Label -->
+                <TextView
+                    android:id="@+id/playerB_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Player B"
+                    android:textColor="#070707"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Game Title -->
+
+    <!-- Reset Button -->
+
+    <!-- Game Layout -->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
