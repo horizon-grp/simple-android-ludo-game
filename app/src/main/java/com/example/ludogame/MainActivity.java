@@ -1,5 +1,6 @@
 package com.example.ludogame;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -21,9 +23,8 @@ public class MainActivity extends AppCompatActivity {
     // Views
     ImageView diceImage;
     Button rollDiceButton;
+    Button resetButton;
     TextView infoText;
-//    LinearLayout playerAPath;
-//    LinearLayout playerBPath;
     TextView playerALabel;
     TextView playerBLabel;
 
@@ -33,14 +34,15 @@ public class MainActivity extends AppCompatActivity {
     int player1Position;
     int player2Position;
 
+    int p1Moves;
+    int p2Moves;
+
     private enum Player{
         PLAYER_1,
         PLAYER_2
     }
 
-
-    // Variables
-    Player currentPlayer; // 1 for Player A, 2 for Player B
+    Player currentPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,13 +59,15 @@ public class MainActivity extends AppCompatActivity {
         diceImage = findViewById(R.id.dice_image);
         rollDiceButton = findViewById(R.id.roll_dice_button);
         infoText = findViewById(R.id.info_text);
-//        playerAPath = findViewById(R.id.playerA_path);
-//        playerBPath = findViewById(R.id.playerB_path);
         playerALabel = findViewById(R.id.playerA_label);
         playerBLabel = findViewById(R.id.playerB_label);
 
         player1Position = 0;
         player2Position = 0;
+
+        p1Moves = 0;
+        p2Moves = 0;
+
         currentPlayer = Player.PLAYER_1;
 
         player1Path = new ArrayList<ImageView>();
@@ -102,7 +106,28 @@ public class MainActivity extends AppCompatActivity {
                 rollDice();
             }
         });
+
+        Button resetButton = findViewById(R.id.reset_button);
+        resetButton.setOnClickListener(view -> {
+            // Create and show the AlertDialog
+            new AlertDialog.Builder(this)
+                    .setTitle("Reset Game")
+                    .setMessage("Are you sure you want to reset the game?")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            resetGame();
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+        });
     }
+
     private void rollDice() {
         // Generate a random number between 1 and 6
         Random random = new Random();
@@ -118,14 +143,17 @@ public class MainActivity extends AppCompatActivity {
         if (currentPlayer == Player.PLAYER_1){
             updatePlayerPosition(diceValue, Player.PLAYER_1);
             currentPlayer = Player.PLAYER_2;
+            p1Moves++;
+            updateTurnInfo();
+            winCheck(Player.PLAYER_1);
         }
         else if (currentPlayer == Player.PLAYER_2){
             updatePlayerPosition(diceValue, Player.PLAYER_2);
             currentPlayer = Player.PLAYER_1;
+            p2Moves++;
+            updateTurnInfo();
+            winCheck(Player.PLAYER_2);
         }
-
-        // Update Info
-        updateTurnInfo();
     }
 
     private void updatePlayerPosition(int moves, Player player){
@@ -167,5 +195,29 @@ public class MainActivity extends AppCompatActivity {
     private void updateTurnInfo() {
         String turnText = "Player " + ((currentPlayer == Player.PLAYER_1) ? "A" : "B") + "'s Turn";
         infoText.setText(turnText);
+    }
+
+    private void winCheck(Player player){
+        if(player == Player.PLAYER_1){
+            if (player1Position == 9){
+                infoText.setText("Player A Won!! 🎉");
+            }
+        }
+        else if(player == Player.PLAYER_2){
+            if (player2Position == 9){
+                infoText.setText("Player B Won!! 🎉");
+            }
+        }
+    }
+
+    private void resetGame() {
+        (player1Path.get(player1Position)).setImageResource(R.drawable.player1);
+        (player2Path.get(player2Position)).setImageResource(R.drawable.player2);
+        player1Position = 0;
+        player2Position = 0;
+        p1Moves = 0;
+        p2Moves = 0;
+        (player1Path.get(player1Position)).setImageResource(R.drawable.player1_seed);
+        (player2Path.get(player2Position)).setImageResource(R.drawable.player2_seed);
     }
 }
